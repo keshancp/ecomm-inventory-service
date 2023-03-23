@@ -28,7 +28,7 @@ public class InventoryServiceImpl implements InventoryService{
 		Optional<List<Inventory>> inventoryList= inventoryRepository.findAllByItemCode(itemCode);
 		List<InventoryDto> inventoryDtoList = null;
 		if(inventoryList.isPresent()) {
-			inventoryDtoList=inventoryList.get().stream().map(inventory->mapToDto(inventory)).toList();
+			//inventoryDtoList=inventoryList.get().stream().map(inventory->mapToDto(inventory)).toList();
 		}
 		
 		return inventoryDtoList;
