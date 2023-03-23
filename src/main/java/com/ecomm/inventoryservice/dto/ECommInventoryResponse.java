@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class InventoryResponse {
+public class ECommInventoryResponse {
 
 	@ApiModelProperty(notes = "Response status code")
 	private int statusCode;

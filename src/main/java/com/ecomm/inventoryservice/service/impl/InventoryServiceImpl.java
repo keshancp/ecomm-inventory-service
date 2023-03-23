@@ -3,6 +3,7 @@ package com.ecomm.inventoryservice.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.ecomm.inventoryservice.exception.ECommInventoryException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +25,7 @@ public class InventoryServiceImpl implements InventoryService{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<InventoryDto> isInStock(String itemCode,String traceId) {
+	public List<InventoryDto> isInStock(String itemCode,String traceId) throws ECommInventoryException{
 		Optional<List<Inventory>> inventoryList= inventoryRepository.findAllByItemCode(itemCode);
 		List<InventoryDto> inventoryDtoList = null;
 		if(inventoryList.isPresent()) {
@@ -37,7 +38,7 @@ public class InventoryServiceImpl implements InventoryService{
 
 	@Override
 	@Transactional
-	public InventoryDto addItem(InventoryDto inventoryDto,String traceId) {
+	public InventoryDto addItem(InventoryDto inventoryDto,String traceId) throws ECommInventoryException {
 		
 		Inventory inventory=Inventory.builder()
 		.itemCode(inventoryDto.getItemCode())
